@@ -1,0 +1,3 @@
+<ng-comtainer *ngif="data$ | async as data ">
+  <app-profile-form [data]="data === 'undundefined' ? undeundefined : data"/>
+</ng-comtainer>

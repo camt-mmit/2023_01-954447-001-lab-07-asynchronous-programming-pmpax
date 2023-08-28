@@ -1,0 +1,45 @@
+<form [formGroup]="formGroup">
+  <div>
+    <label for="app-inp-student-id">
+      Student ID
+    </label>
+    <input id="app-inp-student-id" type="text" formControlName="studentId">
+
+    <label for="app-inp-first-name">
+      FirstName
+    </label>
+    <input id="app-inp-first-name" type="text" formControlName="FirstName">
+
+    <label for="app-inp-last-name">
+      lastname
+    </label>
+    <input id="app-inp-last-name" type="text" formControlName="lastname">
+
+    <label for="app-inp-age">
+      Age
+    </label>
+    <input id="app-inp-age" type="number" step="1" formControlName="Age">
+
+    <label for="app-inp-autobiography">
+      autobiography
+    </label>
+    <textarea id="app-inp-autobiography" formControlName="autobiography" rows="10"></textarea>
+
+    <fieldset>
+      <legend>
+        friends
+        <button type="button" (click)="addFriend()" >add</button>
+      </legend>
+
+      <div formArrayName="friends">
+        <ng-container *ngFor="let friends of formGroup.controls['friends'].controls;let i = index">
+          <button type="button" (click)="moveFriend(i,-1)" >up</button>
+          <button type="button" (click)="moveFriend(i,+1)" >down</button>
+          <input type="text" [formControlName]="i"/>
+          <button type="button" (click)="removeFriend(i)" >X</button>
+        </ng-container>
+      </div>
+    </fieldset>
+  </div>
+
+</form>
